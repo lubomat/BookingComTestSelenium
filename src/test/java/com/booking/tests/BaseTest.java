@@ -3,9 +3,7 @@ package com.booking.tests;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.booking.utils.DriverFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -40,13 +38,13 @@ public class BaseTest {
 //        driver = new ChromeDriver();   //   "chrome"
         driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(2L, TimeUnit.SECONDS);
-        driver.get("http://kurs-selenium.pl/demo/");
+        driver.get("http://booking.com");
         driver.manage().window().maximize();
     }
 
     @AfterMethod
     public void afterSetup() {
-        driver.quit();
+//        driver.quit();
     }
 }
 
