@@ -5,6 +5,8 @@ import com.booking.pages.ResultsPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class HotelSearchTest extends BaseTest {
 
     @Test
@@ -18,6 +20,9 @@ public class HotelSearchTest extends BaseTest {
         ResultsPage resultsPage = new ResultsPage(driver);
 
         Assert.assertTrue(resultsPage.resultHeading.isDisplayed());
+
+        List<String> hotelNames = resultsPage.getHotelNames();
+        System.out.println(hotelNames);
 
     }
 
