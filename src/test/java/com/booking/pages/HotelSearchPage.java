@@ -1,5 +1,7 @@
 package com.booking.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +16,10 @@ public class HotelSearchPage {
     @FindBy(id = ":re:")
     private WebElement hotelSearchInput;
 
-    @FindBy(xpath = "//span[text()='Data zameldowania']")
+    @FindBy(className = "b80d5adb18")
+//    private WebElement checkInInput;
+//    @FindBy(xpath = "//span[@class='b80d5adb18']")
+//    @FindBy(xpath = "//span[@class='cf06f772fa ef091eb985' and text()='19']")
     private WebElement checkInInput;
 
     @FindBy(xpath = "//span[text()='Data wymeldowania']")
@@ -46,11 +51,15 @@ public class HotelSearchPage {
         this.driver = driver;
     }
 
+    private static final Logger logger = LogManager.getLogger();
 
     public void setCity(String cityName) {
+        logger.info("Closing cookie");
         cookieButton.click();
+        logger.info("Setting city " + cityName);
         hotelSearchInput.sendKeys(cityName);
         driver.findElement(By.xpath("//div[text()='"+cityName+"']")).click();
+        logger.info("Setting city done");
 
     }
 
@@ -66,7 +75,9 @@ public class HotelSearchPage {
     }
 
     public void performSearch() {
+        logger.info("Performing search");
         searchButton.click();
+        logger.info("Performing search done");
     }
 
     public void closePromoAlert() {
