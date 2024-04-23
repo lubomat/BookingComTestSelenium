@@ -22,15 +22,21 @@ public class HotelSearchTest extends BaseTest {
         test.log(Status.PASS,"Setting city done", SeleniumHelper.getScreenshot(driver));
 //        hotelSearchPage.setDates("2024-05-01","2024-05-10");
         hotelSearchPage.performSearch();
+        test.log(Status.PASS,"Performing search done", SeleniumHelper.getScreenshot(driver));
+
         hotelSearchPage.closePromoAlert();
+        test.log(Status.PASS,"Closing promo alert done", SeleniumHelper.getScreenshot(driver));
+
 
 
         ResultsPage resultsPage = new ResultsPage(driver);
 
         Assert.assertTrue(resultsPage.resultHeading.isDisplayed());
+        test.log(Status.PASS, "Assertions passed", SeleniumHelper.getScreenshot(driver));
 
-        List<String> hotelNames = resultsPage.getHotelNames();
-        System.out.println(hotelNames);
+
+//        List<String> hotelNames = resultsPage.getHotelNames();
+//        System.out.println(hotelNames);
 
     }
 
