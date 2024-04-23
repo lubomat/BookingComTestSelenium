@@ -37,11 +37,14 @@ public class HotelSearchPage {
     @FindBy(xpath = "//*[@id=\":rf:\"]/div/div[3]/div[2]/button[2]/span/span/svg/path")
     private WebElement roomPlusBtn;
 
-    @FindBy(xpath = "//*[@id=\"indexsearch\"]/div[2]/div/form/div[1]/div[4]/button")
+    @FindBy(xpath = "//span[text()='Szukaj']")
     private WebElement searchButton;
 
     @FindBy(xpath = "//*[@id=\"b2searchresultsPage\"]/div[46]/div/div/div/div[1]/div[1]/div/button")
     private WebElement promoAlertFrame;
+
+    @FindBy(xpath = "//span[text()='Zarejestruj się']")
+    private WebElement signUpLink;
 
 
     private WebDriver driver;
@@ -54,7 +57,7 @@ public class HotelSearchPage {
     private static final Logger logger = LogManager.getLogger();
 
     public void setCity(String cityName) {
-        logger.info("Closing cookie");
+        logger.info("Closing cookie done");
         cookieButton.click();
         logger.info("Setting city " + cityName);
         hotelSearchInput.sendKeys(cityName);
@@ -86,6 +89,10 @@ public class HotelSearchPage {
         } catch (Exception e) {
             System.out.println("Wyskakujące okno promocyjne nie zostało wyświetlone lub nie można go zamknąć.");
         }
+    }
+
+    public void openSignUpForm() {
+        signUpLink.click();
     }
 
 
